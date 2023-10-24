@@ -1,0 +1,23 @@
+# OpenAI Configuration
+
+openai:
+  # API endpoint for making calls to OpenAI
+  endpoint: "https://api.openai.com/v1/engines/davinci"
+  
+  # Your OpenAI API Key
+  api_key: "YOUR_OPENAI_API_KEY"
+  
+  # Default parameters for API calls
+  default_params:
+    max_tokens: 150
+    temperature: 0.7
+    prompt: "Given the following alert information, provide the best course of action based on the runbook instructions:"
+
+  
+  # Optional settings
+  headers:
+    Content-Type: "application/json"
+    Authorization: "Bearer {api_key}"
+
+  # Any other specific configuration or parameters you want to use by default for your OpenAI interactions can be added here.
+

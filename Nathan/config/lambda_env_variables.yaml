@@ -1,0 +1,19 @@
+# Nathan's AWS Lambda Environment Variables
+
+# Slack Configuration
+SLACK_API_TOKEN: "YOUR_SLACK_API_TOKEN"  # Slack API token for integration.
+SLACK_CHANNEL_ID: "YOUR_SLACK_CHANNEL_ID"  # The ID of the Slack channel to monitor.
+
+# OpenAI Configuration
+OPENAI_API_KEY: "YOUR_OPENAI_API_KEY"  # OpenAI GPT API key for decision-making.
+
+# AWS Configuration
+DYNAMODB_TABLE_NAME: "NathanAlertsTable"  # Name of the DynamoDB table to store alert data.
+AWS_REGION: "YOUR_AWS_REGION"  # AWS region where resources are deployed, e.g., "us-west-2".
+
+# Miscellaneous
+LOG_LEVEL: "INFO"  # The logging level. Options: DEBUG, INFO, WARNING, ERROR, CRITICAL.
+MAX_RESPONSE_TIME: 300  # Maximum time (in seconds) allowed for Nathan to respond to an alert.
+
+# Any other environment-specific configurations you need for your project can be added here.
+

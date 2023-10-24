@@ -1,0 +1,53 @@
+# DynamoDB Configuration for Nathan
+
+# General settings
+region: "us-west-2" # AWS region where your DynamoDB is hosted
+endpoint: "https://dynamodb.us-west-2.amazonaws.com" # Endpoint URL (default to AWS, can be changed if using local DynamoDB)
+
+# Alerts table
+alerts_table:
+  name: "Nathan_Alerts"
+  read_capacity: 5
+  write_capacity: 5
+  primary_key:
+    name: "alert_id"
+    type: "S" # String type
+  sort_key:
+    name: "timestamp"
+    type: "N" # Number type
+
+# Runbook table
+runbooks_table:
+  name: "Nathan_Runbooks"
+  read_capacity: 5
+  write_capacity: 5
+  primary_key:
+    name: "runbook_id"
+    type: "S"
+  sort_key: 
+    name: "last_updated"
+    type: "N"
+
+# Analytics table
+analytics_table:
+  name: "Nathan_Analytics"
+  read_capacity: 10
+  write_capacity: 10
+  primary_key:
+    name: "event_id"
+    type: "S"
+  sort_key: 
+    name: "event_timestamp"
+    type: "N"
+
+# NOC Engineer response time statistics table
+noc_statistics_table:
+  name: "NOC_Stats"
+  read_capacity: 5
+  write_capacity: 5
+  primary_key:
+    name: "engineer_id"
+    type: "S"
+  sort_key: 
+    name: "response_timestamp"
+    type: "N"

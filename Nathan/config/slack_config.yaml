@@ -1,0 +1,29 @@
+# Nathan's Slack Configuration
+
+# Slack API Token
+api_token: "YOUR_SLACK_API_TOKEN"
+
+# Channels
+monitoring_channel: 
+  id: "YOUR_MONITORING_CHANNEL_ID"
+  name: "monitoring-alerts"
+
+noc_team_channel: 
+  id: "YOUR_NOC_TEAM_CHANNEL_ID"
+  name: "noc-team"
+
+# WebSockets
+websocket_url: "wss://YOUR_SLACK_WEBSOCKET_URL"
+ping_interval: 30  # In seconds
+
+# Message Templates
+alert_message_template: "Alert received: {alert_name} with priority {priority}."
+escalation_message_template: "Escalating alert: {alert_name} to NOC team."
+resolution_message_template: "Alert {alert_name} has been resolved."
+
+# Thresholds and Rules
+medium_priority_threshold: 5  # e.g., After 5 medium priority alerts in 10 minutes, escalate.
+high_priority_threshold: 3  # e.g., After 3 high priority alerts in 10 minutes, escalate.
+
+# Other custom configurations related to Slack can be added as needed.
+
