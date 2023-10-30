@@ -1,42 +1,37 @@
 import os
 import json
 import datetime
+import requests
 
 def load_json_file(file_path):
-    """
-    Загрузить содержимое JSON файла.
-
-    :param file_path: Путь к JSON файлу.
-    :return: Содержимое файла в виде объекта Python.
-    """
     with open(file_path, 'r') as file:
         return json.load(file)
 
 def save_to_json_file(data, file_path):
-    """
-    Сохранить данные в JSON файл.
-
-    :param data: Данные для сохранения.
-    :param file_path: Путь к JSON файлу.
-    """
     with open(file_path, 'w') as file:
         json.dump(data, file, indent=4)
 
 def ensure_directory_exists(directory_path):
-    """
-    Убедиться, что директория существует. Если нет - создать.
-
-    :param directory_path: Путь к директории.
-    """
     if not os.path.exists(directory_path):
         os.makedirs(directory_path)
 
 def current_timestamp():
-    """
-    Получить текущий временной отпечаток в формате строки.
-
-    :return: Строковое представление текущего временного отпечатка.
-    """
     return datetime.datetime.now().strftime('%Y-%m-%d %H:%M:%S')
 
-# Дополнительные функции могут быть добавлены по мере необходимости...
+def generate_unique_message(template, alert_name, priority=None):
+    OPENAI_API_KEY = "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"
+    headers = {
+        "Authorization": f"Bearer {OPENAI_API_KEY}",
+        "Content-Type": "application/json"
+    }
+    
+    data = {
+        "prompt": f"Based on the template: '{template}', create a unique message for an alert named '{alert_name}' with priority '{priority}'",
+        "max_tokens": 150
+    }
+    
+    response = requests.post("https://api.openai.com/v1/engines/davinci/completions", headers=headers, data=json.dumps(data))
+    message = response.json().get("choices", [{}])[0].get("text", "").strip()
+    
+    return message
+

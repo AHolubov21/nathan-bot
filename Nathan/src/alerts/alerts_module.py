@@ -1,11 +1,18 @@
-import slack_module
-import json
+from general_utils import generate_unique_message
 
 class AlertsModule:
-    def __init__(self):
-        self.slack = slack_module.SlackWebSocketClient()
 
-    def send_alert(self, message):
-        self.slack.send_message(message)
+    def __init__(self, runbook_data, slack_module):
+        self.runbook = runbook_data
+        self.slack = slack_module
 
-    # Другие методы и функции для управления оповещениями.
+    def process_alert(self, alert):
+        # Предполагая, что алерт приходит в формате JSON:
+        alert_name = alert.get('alert_name')
+        priority = self.runbook.get(alert_name)
+
+        if not priority:
+            return
+
+        message = generate_unique_message("Alert received: {alert_name} with priority {priority}.", alert_name, priority)
+        self.slack.send_message("#your_channel_name", message)

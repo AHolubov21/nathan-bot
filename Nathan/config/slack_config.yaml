@@ -1,19 +1,19 @@
 # Nathan's Slack Configuration
 
 # Slack API Token
-api_token: "YOUR_SLACK_API_TOKEN"
+api_token: "your clack token"
 
 # Channels
 monitoring_channel: 
-  id: "YOUR_MONITORING_CHANNEL_ID"
+  id: "id"
   name: "monitoring-alerts"
 
 noc_team_channel: 
-  id: "YOUR_NOC_TEAM_CHANNEL_ID"
+  id: "id"
   name: "noc-team"
 
 # WebSockets
-websocket_url: "wss://YOUR_SLACK_WEBSOCKET_URL"
+#websocket_url: "wss://YOUR_SLACK_WEBSOCKET_URL"
 ping_interval: 30  # In seconds
 
 # Message Templates

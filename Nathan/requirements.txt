@@ -25,3 +25,6 @@ requests==2.26.0
 python-dotenv==0.19.2
 
 # If you are using other frameworks, services or tools, include their libraries here.
+
+pyyaml==5.4.1
+openai==0.27.3

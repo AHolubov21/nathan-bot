@@ -5,7 +5,7 @@ openai:
   endpoint: "https://api.openai.com/v1/engines/davinci"
   
   # Your OpenAI API Key
-  api_key: "YOUR_OPENAI_API_KEY"
+  api_key: "api key"
   
   # Default parameters for API calls
   default_params:

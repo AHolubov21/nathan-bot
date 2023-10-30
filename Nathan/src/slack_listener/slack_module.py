@@ -6,7 +6,6 @@ class SlackModule:
 
     def __init__(self, token):
         self.token = token
-        self.connect_url = self.get_rtm_url()
         self.headers = {
             "Content-Type": "application/json; charset=utf-8",
             "Authorization": f"Bearer {self.token}"
@@ -32,26 +31,15 @@ class SlackModule:
         )
         return response.json()
 
-    def listen(self):
+    def listen(self, callback):
         def on_message(ws, message):
-            print("Received:", message)
-            # Здесь можно добавить логику обработки входящих сообщений
+            callback(message)
+
+        # Получение URL для WebSocket прямо перед его использованием
+        websocket_url = self.get_rtm_url()
 
         ws = websocket.WebSocketApp(
-            self.connect_url,
+            websocket_url,
             on_message=on_message
         )
         ws.run_forever()
-
-# Пример использования:
-
-if __name__ == "__main__":
-    SLACK_TOKEN = "YOUR_SLACK_TOKEN"
-    slack_module = SlackModule(SLACK_TOKEN)
-    
-    # Отправка сообщения
-    response = slack_module.send_message("#general", "Hello, World!")
-    print(response)
-
-    # Прослушивание входящих сообщений через веб-сокеты
-    slack_module.listen()
